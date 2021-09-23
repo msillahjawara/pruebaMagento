@@ -13,7 +13,6 @@ use Symfony\Component\Console\Input\InputOption;
 class MarksCommand extends Command
 {
 
-    //const NAME = 'name';
     /**
      * @var Exam
      */
@@ -32,21 +31,14 @@ class MarksCommand extends Command
     {
         $this->block = $block;
         $this->exam=$exam;
-        parent::__construct($name);
+        parent::__construct();
     }
 
 
     protected function configure()
     {
-        $this->setName('hiberus:exams:show')
-            ->setDescription('Mostrar examenes')
-            /*->addOption(
-                self::NAME,
-                null,
-                InputOption::VALUE_OPTIONAL,
-                'Name'
-            )*/;
-
+        $this->setName('hiberus:sillah')
+            ->setDescription('Mostrar examenes');
         parent::configure();
     }
 
@@ -57,11 +49,6 @@ class MarksCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        /*if ($input->getOption(self::NAME)) {
-            $name = $input->getOption(self::NAME);
-        } else {
-            $name = $this->exam->getMark();
-        }*/
         $exams = $this->block->getExams();
         foreach ($exams as $item){
             $this->exam->setIdExam($item->getIdExam());
