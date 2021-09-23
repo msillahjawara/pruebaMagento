@@ -24,5 +24,9 @@
             </argument>
         </arguments>
     </type>
+    <!-- Plugin de notas suspensas -->
 
+    <type name="Hiberus\Sillah\Model\Exam">
+        <plugin name="exam_plugin" type="Hiberus\Sillah\Plugin\Mark\MarksPlugin" sortOrder="10"  />
+    </type>
 </config>
