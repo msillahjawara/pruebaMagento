@@ -5,8 +5,7 @@
 use Hiberus\Curso\Block\Index;
 $exam=$block->getExams();
 //var_dump($exam->getData());die;
-$exams = $block->getExams();
-//var_dump($average->getData);die;
+$evaluation="";
 ?>
 <h2 class="title">Exam</h2>
     <?php foreach ($exam as $item){
@@ -14,8 +13,15 @@ $exams = $block->getExams();
 <ul>
     <li><?=$item->getFirstname()?></li>
     <li><?=$item->getLastname()?></li>
-    <li><?=$item->getMark()?></li>
+    <?php
+    if($item->getMark() > 4.9){
+        $evaluation="aprobado";
+    }else{
+        $evaluation="suspenso";
+    }
+    ?>
+    <li class="<?=$evaluation?>"><?=$item->getMark()?></li>
 </ul>
     <?php } ?>
-<p><?= __('Total number of %1 students', [sizeof($exams)]) ?></p>
+<p><?= __('Total number of %1 students', [sizeof($exam)]) ?></p>
 <p><?= __('Average Exam marks %1', [$block->getAverageMarks()]) ?></p>

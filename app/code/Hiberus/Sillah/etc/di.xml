@@ -29,4 +29,11 @@
     <type name="Hiberus\Sillah\Model\Exam">
         <plugin name="exam_plugin" type="Hiberus\Sillah\Plugin\Mark\MarksPlugin" sortOrder="10"  />
     </type>
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="comando_examen" xsi:type="object">Hiberus\Sillah\Console\MarksCommand</item>
+            </argument>
+        </arguments>
+    </type>
 </config>
