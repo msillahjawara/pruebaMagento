@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="sillah" sortOrder="999" translate="label">
+            <label>Sillah</label>
+        </tab>
+        <section id="hiberus_sillah" showInDefault="1" sortOrder="10">
+            <label>Sillah Attributes</label>
+            <tab>sillah</tab>
+            <resource>Hiberus_Sillah::config</resource>
+            <group id="general" showInDefault="1" sortOrder="10">
+                <label>General</label>
+                <field id="name_general" type="text" showInDefault="1" sortOrder="10">
+                    <label>Nombre General</label>
+                </field>
+                <field id="numero_general" type="text" showInDefault="1" sortOrder="10">
+                    <validate>integer</validate>
+                    <label>Numero General</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

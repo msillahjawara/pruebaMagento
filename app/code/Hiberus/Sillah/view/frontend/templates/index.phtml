@@ -1,0 +1,21 @@
+<?php
+/**
+ * @var Index $block
+ */
+use Hiberus\Curso\Block\Index;
+$exam=$block->getExams();
+//var_dump($exam->getData());die;
+$exams = $block->getExams();
+//var_dump($average->getData);die;
+?>
+<h2 class="title">Exam</h2>
+    <?php foreach ($exam as $item){
+        ?>
+<ul>
+    <li><?=$item->getFirstname()?></li>
+    <li><?=$item->getLastname()?></li>
+    <li><?=$item->getMark()?></li>
+</ul>
+    <?php } ?>
+<p><?= __('Total number of %1 students', [sizeof($exams)]) ?></p>
+<p><?= __('Average Exam marks %1', [$block->getAverageMarks()]) ?></p>

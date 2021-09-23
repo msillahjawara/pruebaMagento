@@ -1,0 +1,26 @@
+@margin-left-primary:20px;
+& when (@media-common = true) {
+    .page-footer{
+        display: none;
+    }
+
+    .title{
+        color: darkblue;
+    }
+
+    ul:nth-child(even) {
+        .exam-mixin(@margin-left-primary);
+    }
+
+}
+.media-width(@extremum,@break) when (@extremum='min') and (@break = @screen__m){
+    .page-footer{
+        display: block;
+        .mi-mixin(#fc3003,#1e0475);
+    }
+
+    .title{
+        color: #006600;
+    }
+
+}
