@@ -2,22 +2,24 @@
 /**
  * @var Index $block
  */
-use Hiberus\Curso\Block\Index;
+use Hiberus\Sillah\Block\Index;
 $exam=$block->getExams();
 $maxMarks=$block->getMaxMarks();
 $evaluation="";
-//var_dump($maxMarks);
+var_dump($maxMarks);
 $defaultMark=$block->getDefaultMark();
 $elements=$block->getElements();
 $iterable=0;
 ?>
 <h2 class="title">Exam</h2>
+<button id="hiding">Hide/Show</button>
+<div id="list">
     <?php
     foreach ($exam as $item){
         if ($iterable++ == $elements && $elements>0){
             break;
         }   ?>
-<ul>
+<ul >
     <li><?=$item->getFirstname()?></li>
     <li><?=$item->getLastname()?></li>
     <?php
@@ -27,7 +29,7 @@ $iterable=0;
         $evaluation="suspenso";
     }
 
-    if(array_search($item->getMark(),$maxMarks)){
+    if(array_search(floatval($item->getMark()),$maxMarks)){
         ?>
         <li class="<?=$evaluation?>"><strong><?=$item->getMark()?></strong></li>
         <?php
@@ -39,5 +41,23 @@ $iterable=0;
     ?>
 </ul>
     <?php } ?>
+</div>
+<button id="maxmark">Show maximum mark</button>
 <p><?= __('Total number of %1 students', [count($exam)]) ?></p>
 <p><?= __('Average Exam marks %1', [$block->getAverageMarks()]) ?></p>
+<script>
+    var maxMark = <?= $block->getMaxMark() ?>
+</script>
+<script>
+    require(['jquery', 'btnscript'], function($, btnscript) {
+        btnscript('#hiding','#list');
+    });
+</script>
+<script>
+    require(['jquery', 'alertscript'], function($, alertscript) {
+        alertscript('#maxmark');
+    });
+</script>
+
+
+
