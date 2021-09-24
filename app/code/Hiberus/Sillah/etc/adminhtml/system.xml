@@ -11,12 +11,13 @@
             <resource>Hiberus_Sillah::config</resource>
             <group id="general" showInDefault="1" sortOrder="10">
                 <label>General</label>
-                <field id="name_general" type="text" showInDefault="1" sortOrder="10">
-                    <label>Nombre General</label>
-                </field>
-                <field id="numero_general" type="text" showInDefault="1" sortOrder="10">
+                <field id="element_general" type="text" showInDefault="1" sortOrder="10">
+                    <label>Elementos</label>
                     <validate>integer</validate>
-                    <label>Numero General</label>
+                </field>
+                <field id="number_general" type="text" showInDefault="1" sortOrder="10">
+                    <validate>validate-number</validate>
+                    <label>Calificacion minima General</label>
                 </field>
             </group>
         </section>

@@ -5,6 +5,8 @@ namespace Hiberus\Sillah\Block;
 use Hiberus\Sillah\Model\Exam;
 use Hiberus\Sillah\Api\Data\ExamInterfaceFactory;
 use Hiberus\Sillah\Api\ExamRepositoryInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Model\ScopeInterface;
 
 class Index extends \Magento\Framework\View\Element\Template
 {
@@ -21,6 +23,7 @@ class Index extends \Magento\Framework\View\Element\Template
         ExamRepositoryInterface $examRepository,
         ExamInterfaceFactory $examInterfaceFactory,
         \Hiberus\Sillah\Model\ResourceModel\Exam $examResource,
+        ScopeConfigInterface $scopeConfig,
         array $data = []
     ) {
         $this->registry = $registry;
@@ -28,6 +31,7 @@ class Index extends \Magento\Framework\View\Element\Template
         $this->examRepository = $examRepository;
         $this->examInterfaceFactory = $examInterfaceFactory;
         $this->examResource = $examResource;
+        $this->scopeConfig=$scopeConfig;
         parent::__construct($context, $data);
     }
 
@@ -54,6 +58,19 @@ class Index extends \Magento\Framework\View\Element\Template
         }
         $averageMark=array_sum($marks)/count($marks);
         return $averageMark;
+    }
+
+     public function getDefaultMark() {
+         $defaultMark= $this->scopeConfig->getValue( 'hiberus_sillah/general/number_general', ScopeInterface::SCOPE_STORE);
+         if(is_null($defaultMark)||$defaultMark<=0){
+             $defaultMark=5;
+         }
+         return $defaultMark;
+     }
+
+    public function getElements() {
+        $elements= $this->scopeConfig->getValue( 'hiberus_sillah/general/element_general', ScopeInterface::SCOPE_STORE);
+        return $elements;
     }
 
     public function insertEvaluation($firstname, $lastname,$mark) {
