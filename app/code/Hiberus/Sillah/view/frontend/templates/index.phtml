@@ -6,7 +6,6 @@ use Hiberus\Sillah\Block\Index;
 $exam=$block->getExams();
 $maxMarks=$block->getMaxMarks();
 $evaluation="";
-var_dump($maxMarks);
 $defaultMark=$block->getDefaultMark();
 $elements=$block->getElements();
 $iterable=0;
@@ -24,9 +23,9 @@ $iterable=0;
     <li><?=$item->getLastname()?></li>
     <?php
     if($item->getMark() >= $defaultMark){
-        $evaluation="aprobado";
+        $evaluation="approved";
     }else{
-        $evaluation="suspenso";
+        $evaluation="suspended";
     }
 
     if(in_array($item->getMark(),$maxMarks)){

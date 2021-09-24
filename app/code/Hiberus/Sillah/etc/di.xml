@@ -1,17 +1,4 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
-    <!--<type name="Magento\Catalog\Model\Product">
-        <plugin name="product_plugin" type="Hiberus\Curso\Plugin\Catalog\ProductPlugin" sortOrder="10"  />
-    </type>
-    <type name="Magento\Framework\Pricing\Render\Amount">
-        <plugin name="price_plugin" type="Hiberus\Curso\Plugin\Pricing\ProductPricing" sortOrder="10"  />
-    </type>
-    <type name="Magento\Framework\Console\CommandListInterface">
-        <arguments>
-            <argument name="commands" xsi:type="array">
-                <item name="comando_autor" xsi:type="object">Hiberus\Curso\console\AuthorsCommand</item>
-            </argument>
-        </arguments>
-    </type>-->
     <preference for="Hiberus\Sillah\Api\Data\ExamInterface" type="Hiberus\Sillah\Model\Exam"/>
     <preference for="Hiberus\Sillah\Api\ExamRepositoryInterface" type="Hiberus\Sillah\Model\ExamRepository"/>
     <type name="Magento\Framework\EntityManager\MetadataPool">
@@ -24,8 +11,6 @@
             </argument>
         </arguments>
     </type>
-    <!-- Plugin de notas suspensas -->
-
     <type name="Hiberus\Sillah\Model\Exam">
         <plugin name="exam_plugin" type="Hiberus\Sillah\Plugin\Mark\MarksPlugin" sortOrder="10"  />
     </type>

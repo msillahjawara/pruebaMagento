@@ -12,7 +12,6 @@ class MarksPlugin
         if ($subject->getData('mark') < 5.0) {
             $subject->setMark(4.9);
             $result = $subject->getData('mark');
-            //var_dump($subject->getData());die;
         }
         return $result;
 
