@@ -60,6 +60,25 @@ class Index extends \Magento\Framework\View\Element\Template
         return $averageMark;
     }
 
+    public function getMaxMarks(){
+        $total=$this->getExams();
+        $marks=[];
+        $maxMarks=[];
+        foreach ($total as $item){
+            $marks[]=$item->getMark();
+        }
+        rsort($marks);
+        foreach ($marks as $mark){
+            if(count($maxMarks)<3){
+                $maxMarks[]=$mark;
+            }
+        }
+        return $maxMarks;
+    }
+
+
+
+
      public function getDefaultMark() {
          $defaultMark= $this->scopeConfig->getValue( 'hiberus_sillah/general/number_general', ScopeInterface::SCOPE_STORE);
          if(is_null($defaultMark)||$defaultMark<=0){

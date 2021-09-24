@@ -4,8 +4,9 @@
  */
 use Hiberus\Curso\Block\Index;
 $exam=$block->getExams();
-//var_dump($exam->getData());die;
+$maxMarks=$block->getMaxMarks();
 $evaluation="";
+//var_dump($maxMarks);
 $defaultMark=$block->getDefaultMark();
 $elements=$block->getElements();
 $iterable=0;
@@ -25,8 +26,17 @@ $iterable=0;
     }else{
         $evaluation="suspenso";
     }
+
+    if(array_search($item->getMark(),$maxMarks)){
+        ?>
+        <li class="<?=$evaluation?>"><strong><?=$item->getMark()?></strong></li>
+        <?php
+    }else{
+        ?>
+        <li class="<?=$evaluation?>"><?=$item->getMark()?></li>
+        <?php
+    }
     ?>
-    <li class="<?=$evaluation?>"><?=$item->getMark()?></li>
 </ul>
     <?php } ?>
 <p><?= __('Total number of %1 students', [count($exam)]) ?></p>
