@@ -29,7 +29,7 @@ $iterable=0;
         $evaluation="suspenso";
     }
 
-    if(array_search(floatval($item->getMark()),$maxMarks)){
+    if(in_array($item->getMark(),$maxMarks)){
         ?>
         <li class="<?=$evaluation?>"><strong><?=$item->getMark()?></strong></li>
         <?php

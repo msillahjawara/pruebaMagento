@@ -69,7 +69,7 @@ class Index extends \Magento\Framework\View\Element\Template
         }
         rsort($marks);
         foreach ($marks as $mark){
-            if(count($maxMarks)<4){
+            if(count($maxMarks)<3){
                 $maxMarks[]=$mark;
             }
         }
